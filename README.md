@@ -2,7 +2,7 @@
 
 You can access the Kruger National Park base model (see Clemen et al., 2020 for more info) by:
 
-Navigate to the destination folder 'KNP Base Model' and follow the instructions below:
+Unzip the zip file to a location of your choice and open your terminal (linux, mac) or the command line (cmd). Navigate to the destination folder 'KNP Base Model' and follow the instructions below:
 
 ### Start the simulation
 

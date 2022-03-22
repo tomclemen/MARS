@@ -1,0 +1,356 @@
+model KruegerNationalPark
+
+use Mars 
+
+raster-layer Temperature as temperature
+raster-layer Precipitation as precipitation
+
+layer SavannaLayer
+
+enum TreeAgeGroup { Seedling Juvenile Adult Death }
+
+enum GenderType { Male Female }
+
+enum DamageType { No Light Moderate Heavy Extreme }
+
+agent Tree on SavannaLayer {
+	var IsAlive : bool
+	
+	static var AN = "an" // Arkazie
+	static var CA = "ca" // Combretum apiculatun
+	static var SB = "sb" // Marula
+	static var TT = "tt" // generic
+	
+	static var SeedlingsSpawnRatePerYear = 50
+	static var DaysPerYear = 365
+	static var DaysWithLeaves = 228
+	static var E = 2.718281828459045
+	static var PI : real = 3.14159265359
+    static var EarthRadiusInMeters = 6378100.0;	
+	
+	external observe var Species : string
+	external observe var StemDiameter : real
+	var StemHeight : real
+	var HasLeaves : bool
+	observe var LivingWoodMass : real
+	observe var DeadWoodMass : real
+	var MyDamageType : DamageType
+	observe var MyTreeAgeGroup : TreeAgeGroup
+	
+	def TreePosition() => return #(xcor, ycor)
+		
+	initialize {
+		MyTreeAgeGroup = TreeAgeGroup.Seedling
+		MyDamageType = DamageType.No
+		UpdateTreeAgeGroup
+		StemHeight = CalculateHeightByDiameter(StemDiameter)
+		InitWoodMass
+	}
+	
+	passive TakeDeadWoodMass(mass : real) {
+		var result : real 
+		if (mass < DeadWoodMass) {
+			result = mass
+		} else {
+			result = DeadWoodMass
+		}
+		DeadWoodMass = DeadWoodMass - result
+		
+		return result
+	}
+
+	def InitWoodMass() {
+		LivingWoodMass = CalculateLivingWoodMassByDiameter
+		DeadWoodMass = 0.017 * LivingWoodMass
+	}
+
+	def UpdateWoodMass() {
+		LivingWoodMass = CalculateLivingWoodMassByDiameter
+		DeadWoodMass = DeadWoodMass + GenerateDeadwoodMass
+	}
+
+	passive TakeLivingWoodMass(mass : real) {
+		//TODO 1 cm diameter und 100cm height bleiben auf jeden Fall!
+		var currentLivingWoodMass = CalculateLivingWoodMassByDiameter
+		var result : real
+		
+		if (mass < currentLivingWoodMass) {
+			result = mass
+		} else {
+			result = currentLivingWoodMass
+		}
+		MyDamageType = CalculateDamageType(result)
+		LivingWoodMass = LivingWoodMass - result
+		
+	//	println "TakeLivingWoodMass - reduced by:  "+result
+		
+		StemDiameter = CalculateDiameterByWoodMass
+		return result
+	}
+	
+	def CalculateDamageType (result : real) {
+		var quota = result / LivingWoodMass
+		if (quota > 0.9) {
+			return DamageType.Extreme
+		} else if (quota > 0.1) {
+			return DamageType.Moderate
+		}
+		return DamageType.No
+	}
+
+	def UpdatePhotosyntheseActive() { // SUM: 228 days with leaves
+		if      (Time::Month(simtime) === 10 and Time::Day(simtime) === 15)
+			HasLeaves = true
+		else if (Time::Month(simtime) ===  6 and Time::Day(simtime) === 15)
+			HasLeaves = false
+	}
+
+	def UpdateTreeAgeGroup() {
+		if (StemDiameter >= 1) {
+			if (IsJuvenileByStemDiameter) {
+				MyTreeAgeGroup = TreeAgeGroup.Juvenile;
+			} else {
+				MyTreeAgeGroup = TreeAgeGroup.Adult;
+			}
+		}		
+	}
+	
+	def IsJuvenileByStemDiameter() {
+		switch (Species) {
+			case AN: { return StemDiameter <  8 }
+			case CA: { return StemDiameter < 10 }
+			case SB: { return StemDiameter < 20 }
+			case TT: { return StemDiameter < 13 }
+		}
+	}
+
+	tick {
+		UpdateTreeAgeGroup
+		UpdatePhotosyntheseActive
+
+		if (MyTreeAgeGroup === TreeAgeGroup.Seedling) {
+			Seedling
+		} else if (MyTreeAgeGroup === TreeAgeGroup.Juvenile) {
+			Juvenile
+		} else if (MyTreeAgeGroup === TreeAgeGroup.Adult) {
+			Adult
+		}
+		
+		UpdateWoodMass
+		ResetDamageType
+	}
+	
+	def Seedling() {	
+		if (IsFrozen or IsDried) {
+			Die 
+		} else if (MyDamageType !== DamageType.No) {
+			Die
+		} else if (HasLeaves) {
+			GrowSeedling
+		} 		
+	}
+	
+	def IsFrozen() : bool {
+		if (Species === AN) return false
+		
+		var tempToday = temperature.GetNumberValue(ycor, xcor)	
+		return tempToday < 0 and RandomPropabilitySmallenThan(80)
+	}
+	
+	def IsDried() {//TODO werte speichern und abgleichen
+		//true: 12 Tage ohne Regen 
+		var myPrec = precipitation.GetNumberValue(ycor, xcor)	
+		return false
+	}
+
+	def Juvenile() {
+		if (HasLeaves) {
+			if (MyDamageType !== DamageType.No) {
+				GrowResprouting
+			} else {
+				GrowJuvenile
+			}
+		} 
+	}
+
+	def Adult() {
+		if (HasLeaves) {
+			if (MyDamageType === DamageType.No) {
+				GrowAdult(1)
+			} else if (MyDamageType === DamageType.Light) {
+				GrowAdult(ReducedTo(90, 100))
+			} else if (MyDamageType === DamageType.Moderate) {
+				GrowAdult(ReducedTo(70, 90)) 
+			} else if (MyDamageType === DamageType.Heavy) {
+				GrowAdult(ReducedTo(40, 70))
+			} else if (MyDamageType === DamageType.Extreme) {
+				GrowResprouting
+			}
+		} 
+		if (Time::Month(simtime) === 3 and Time::Day(simtime) === 15) {
+			SpawnSeedlings
+		}
+	}
+	
+	def SpawnSeedlings() {
+		for (var i = 0; i < SeedlingsSpawnRatePerYear; i++) {
+			var seedling = spawn Tree at GetRelativePosition(ycor, xcor, random(50), random(360))
+			seedling.SetSpecies(Species)		
+		} 
+	}
+	
+	passive SetSpecies(species : string) {
+		Species = species	
+	}
+		
+	def GrowSeedling() {
+		StemDiameter = StemDiameter + 1d / DaysWithLeaves
+	}
+	
+	def GrowResprouting() {
+		GrowJuvenile
+	}
+	
+	def GrowJuvenile() {
+		switch (Species) {
+			case AN: { GrowJuvenileAn }
+			case CA: { GrowJuvenileCa }
+			case SB: { GrowJuvenileSb }
+			case TT: { GrowJuvenileTt }
+		}
+	}
+	
+	def GrowJuvenileAn() {
+		StemHeight = CalculateHeightByDiameter(StemDiameter) + RandomBetween(11, 36) / DaysWithLeaves
+		StemDiameter = CalculateDiameterByHeight(StemHeight)
+	}
+	
+	def GrowJuvenileCa() {
+		StemDiameter = StemDiameter + (0.08 * StemDiameter + 0.089856) / DaysWithLeaves
+		StemHeight = CalculateHeightByDiameter(StemDiameter)
+	}
+	
+	def GrowJuvenileSb() {
+		StemDiameter = StemDiameter + (-0.068 * StemDiameter + 4.54) / DaysWithLeaves
+		StemHeight = CalculateHeightByDiameter(StemDiameter)
+	}
+	
+	def GrowJuvenileTt() {
+		StemDiameter = StemDiameter + 1 / DaysWithLeaves
+		StemHeight = CalculateHeightByDiameter(StemDiameter)
+	}
+		
+	def GrowAdult(reduceFactor: real) {		
+		switch (Species) {
+			case AN: { GrowAdultAn(reduceFactor) }
+			case CA: { GrowAdultCa(reduceFactor) }
+			case SB: { GrowAdultSb(reduceFactor) }
+			case TT: { GrowAdultTt(reduceFactor) }
+		}
+	}
+	
+	def GrowAdultAn(reduceFactor : real) {
+		StemDiameter = StemDiameter + 0.04 / DaysWithLeaves * reduceFactor
+		StemHeight = StemHeight + (1 - StemHeight/16) * RandomBetween(11, 32) / DaysWithLeaves * reduceFactor	 	
+	}
+	
+	def GrowAdultCa(reduceFactor : real) {
+		StemDiameter = StemDiameter + 0.03 / DaysWithLeaves * reduceFactor
+		StemHeight = StemHeight + (1 - StemHeight/RandomBetween(3, 10)) * 0.5 / DaysWithLeaves * reduceFactor		
+	}
+	
+	def GrowAdultSb(reduceFactor : real) {
+		StemDiameter = StemDiameter + 0.05 / DaysWithLeaves * reduceFactor
+		StemHeight = StemHeight + (1 - StemHeight/18) * RandomBetween(50, 150) / DaysWithLeaves * reduceFactor		
+	}
+	
+	def GrowAdultTt(reduceFactor : real) {
+		StemDiameter = StemDiameter + (0.04 / DaysWithLeaves) * reduceFactor
+		StemHeight = StemHeight + (1 - StemHeight/10) * RandomBetween(1, 150) / DaysWithLeaves * reduceFactor		
+	}	
+	
+ 	def CalculateLivingWoodMassByDiameter() : real { 		
+ 		if(MyTreeAgeGroup === TreeAgeGroup.Seedling) {
+ 			return 0
+ 		}		
+		switch (Species) {
+			case AN: { return E ** (-3.55 + 3.060 * Math.Log(StemDiameter)) / 0.6 }
+			case CA: { return E ** (-3.27 + 2.800 * Math.Log(StemDiameter)) / 0.6 }
+			case SB: { return E ** (-3.35 + 2.620 * Math.Log(StemDiameter)) / 0.6 }
+			case TT: { return E ** (-3.39 + 2.827 * Math.Log(StemDiameter)) / 0.6 }
+		}
+	}
+		
+  	def CalculateDiameterByWoodMass() : real { 				
+		switch (Species) {
+			case AN: { return E ** ((3.55 + Math.Log(LivingWoodMass * 0.6)) / 3.060) }
+			case CA: { return E ** ((3.27 + Math.Log(LivingWoodMass * 0.6)) / 2.800) }
+			case SB: { return E ** ((3.35 + Math.Log(LivingWoodMass * 0.6)) / 2.620) }
+			case TT: { return E ** ((3.39 + Math.Log(LivingWoodMass * 0.6)) / 2.827) }
+		}
+	}
+	
+	def GenerateDeadwoodMass() {
+		return 0.017 * LivingWoodMass / DaysPerYear
+	}
+	
+	def Die() {
+		MyTreeAgeGroup = TreeAgeGroup.Death	
+		IsAlive = false 
+	}
+		
+	def ResetDamageType() {
+		MyDamageType = DamageType.No	 
+	}	
+	
+	static def Reduce(growthrate : real, min : integer, max : integer) {
+		return growthrate * (min + RandomBetween(min, max)) / 100 
+	}
+			
+	static def CalculateHeightByDiameter(stemDiameter : real) : real => return 11.043 * stemDiameter + 88.326
+	
+	static def CalculateDiameterByHeight(stemHeight : real) : real => return (stemHeight - 88.326) / 11.043
+        
+	static def RandomPropabilitySmallenThan(percentage : integer) {
+		return random(100) < percentage
+	}
+	
+	static def RandomBetween(min : integer, max : integer) : real {
+		return random(max + 1 - min) + min 
+	}
+	
+	static def ReducedTo(minPercentage : integer, maxPercentag : integer) : real {
+		return RandomBetween(minPercentage, maxPercentag) / 100
+	}
+	
+    def GetRelativePosition(originLongitude : real, originLatitude : real, bearing : real, distanceInM  : real)  {
+    	var DegreesToRadians : real = PI / 180.0
+    	var RadiansToDegrees : real = 180.0 / PI
+    	var latA : real = DegreesToRadians * originLatitude
+    	var lonA : real = originLongitude * DegreesToRadians
+
+    	var radBearing = bearing * DegreesToRadians
+		var cosB : real = Math.Cos(distanceInM / EarthRadiusInMeters)
+		var cosLatB : real =  Math.Cos(latA)
+
+		var SinLatA : real = Math.Sin(latA)
+		var sinB : real = Math.Sin(distanceInM / EarthRadiusInMeters)
+		var cosBearing : real = Math.Cos(radBearing)
+		var temp1 : real = SinLatA * cosB 
+		var temp2 : real = 0
+       	var lat = Math.Asin(temp1+ cosLatB * sinB * cosBearing)
+		var SinLat : real = Math.Sin(lat)
+       	var sindBearing : real = Math.Sin(radBearing)
+      
+       	var atan1 : real = sindBearing * Math.Sin(distanceInM / EarthRadiusInMeters) * Math.Cos(latA)
+       	
+       	var cosDistance = Math.Cos(distanceInM / EarthRadiusInMeters)
+       	var atan2 : real = cosDistance - SinLatA * SinLat
+		var lon = lonA + Math.Atan2(atan1, atan2)
+
+		var latResult : real = lat * RadiansToDegrees
+		var lonResult : real = lon * RadiansToDegrees
+		
+		return #(lonResult, latResult)
+     }
+}

@@ -1,0 +1,115 @@
+Found and working with 5 Layercontainers.
+Setting up SimulationRun...
+ERROR: Add-in description could not be loaded. (Add-in engine not initialized.)
+ERROR: Add-in description could not be loaded. (Add-in engine not initialized.)
+Starting creation of agent type: MarulaTree
+AgentManager: Using dock-three.mars.haw-hamburg.de:8080 as MARSConfigService address.
+Finished fetching DB data, Starting agent ID creation....
+Finished agent ID creation, Starting agent creation.... AgentCount is : 293455
+Finished agent creation. Created 293455 agents.
+Starting creation of agent type: WaterPoint
+AgentManager: Using dock-three.mars.haw-hamburg.de:8080 as MARSConfigService address.
+Finished fetching DB data, Starting agent ID creation....
+Finished agent ID creation, Starting agent creation.... AgentCount is : 102
+Finished agent creation. Created 102 agents.
+Starting creation of agent type: Elephant
+AgentManager: Using dock-three.mars.haw-hamburg.de:8080 as MARSConfigService address.
+Finished fetching DB data, Starting agent ID creation....
+Finished agent ID creation, Starting agent creation.... AgentCount is : 1500
+Finished agent creation. Created 1500 agents.
+...done in 171667ms or 00:02:51.6675519
+Executed Tick 1 in 62773 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "1","tickCount" : "744","longestTickDuration" : "62773","time" : "1467632462"}
+Executed Tick 2 in 439 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "2","tickCount" : "744","longestTickDuration" : "439","time" : "1467632463"}
+Executed Tick 3 in 1468 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "3","tickCount" : "744","longestTickDuration" : "1468","time" : "1467632464"}
+Executed Tick 4 in 435 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "4","tickCount" : "744","longestTickDuration" : "435","time" : "1467632464"}
+Executed Tick 5 in 412 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "5","tickCount" : "744","longestTickDuration" : "412","time" : "1467632465"}
+Executed Tick 6 in 256 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "6","tickCount" : "744","longestTickDuration" : "256","time" : "1467632465"}
+Executed Tick 7 in 153 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "7","tickCount" : "744","longestTickDuration" : "153","time" : "1467632465"}
+Executed Tick 8 in 357 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "8","tickCount" : "744","longestTickDuration" : "357","time" : "1467632466"}
+Executed Tick 9 in 503 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "9","tickCount" : "744","longestTickDuration" : "503","time" : "1467632466"}
+Executed Tick 10 in 758 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "10","tickCount" : "744","longestTickDuration" : "758","time" : "1467632467"}
+Executed Tick 11 in 562 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "11","tickCount" : "744","longestTickDuration" : "562","time" : "1467632468"}
+Executed Tick 12 in 581 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "12","tickCount" : "744","longestTickDuration" : "581","time" : "1467632468"}
+Executed Tick 13 in 651 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "13","tickCount" : "744","longestTickDuration" : "651","time" : "1467632469"}
+Executed Tick 14 in 946 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "14","tickCount" : "744","longestTickDuration" : "946","time" : "1467632470"}
+Executed Tick 15 in 902 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "15","tickCount" : "744","longestTickDuration" : "902","time" : "1467632471"}
+Executed Tick 16 in 853 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "16","tickCount" : "744","longestTickDuration" : "853","time" : "1467632472"}
+Executed Tick 17 in 1178 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "17","tickCount" : "744","longestTickDuration" : "1178","time" : "1467632473"}
+Executed Tick 18 in 505 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "18","tickCount" : "744","longestTickDuration" : "505","time" : "1467632473"}
+Executed Tick 19 in 508 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "19","tickCount" : "744","longestTickDuration" : "508","time" : "1467632474"}
+Executed Tick 20 in 769 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "20","tickCount" : "744","longestTickDuration" : "769","time" : "1467632475"}
+Executed Tick 21 in 1127 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "21","tickCount" : "744","longestTickDuration" : "1127","time" : "1467632476"}
+Executed Tick 22 in 1932 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "22","tickCount" : "744","longestTickDuration" : "1932","time" : "1467632478"}
+Executed Tick 23 in 607 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "23","tickCount" : "744","longestTickDuration" : "607","time" : "1467632478"}
+Executed Tick 24 in 36079 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "24","tickCount" : "744","longestTickDuration" : "36079","time" : "1467632514"}
+Executed Tick 25 in 831 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "25","tickCount" : "744","longestTickDuration" : "831","time" : "1467632515"}
+Executed Tick 26 in 2048 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "26","tickCount" : "744","longestTickDuration" : "2048","time" : "1467632517"}
+Executed Tick 27 in 1789 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "27","tickCount" : "744","longestTickDuration" : "1789","time" : "1467632519"}
+Executed Tick 28 in 937 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "28","tickCount" : "744","longestTickDuration" : "937","time" : "1467632520"}
+Executed Tick 29 in 1079 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "29","tickCount" : "744","longestTickDuration" : "1079","time" : "1467632521"}
+Executed Tick 30 in 2142 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "30","tickCount" : "744","longestTickDuration" : "2142","time" : "1467632523"}
+Executed Tick 31 in 1952 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "31","tickCount" : "744","longestTickDuration" : "1952","time" : "1467632525"}
+Executed Tick 32 in 2099 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "32","tickCount" : "744","longestTickDuration" : "2099","time" : "1467632528"}
+Executed Tick 33 in 662 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "33","tickCount" : "744","longestTickDuration" : "662","time" : "1467632528"}
+Executed Tick 34 in 2259 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "34","tickCount" : "744","longestTickDuration" : "2259","time" : "1467632531"}
+Executed Tick 35 in 6632 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "35","tickCount" : "744","longestTickDuration" : "6632","time" : "1467632537"}
+Executed Tick 36 in 2036 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "36","tickCount" : "744","longestTickDuration" : "2036","time" : "1467632539"}
+Executed Tick 37 in 37 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "37","tickCount" : "744","longestTickDuration" : "37","time" : "1467632539"}
+Executed Tick 38 in 33 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "38","tickCount" : "744","longestTickDuration" : "33","time" : "1467632539"}
+Executed Tick 39 in 34 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "39","tickCount" : "744","longestTickDuration" : "34","time" : "1467632539"}
+Executed Tick 40 in 38 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "40","tickCount" : "744","longestTickDuration" : "38","time" : "1467632539"}
+Executed Tick 41 in 35 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "41","tickCount" : "744","longestTickDuration" : "35","time" : "1467632540"}
+Executed Tick 42 in 24 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "42","tickCount" : "744","longestTickDuration" : "24","time" : "1467632540"}
+Executed Tick 43 in 2089 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "43","tickCount" : "744","longestTickDuration" : "2089","time" : "1467632542"}
+Executed Tick 44 in 9 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "44","tickCount" : "744","longestTickDuration" : "9","time" : "1467632542"}
+Executed Tick 45 in 8 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "45","tickCount" : "744","longestTickDuration" : "8","time" : "1467632542"}
+Executed Tick 46 in 9 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "46","tickCount" : "744","longestTickDuration" : "9","time" : "1467632542"}
+Executed Tick 47 in 348 ms.
+{"simulationId" : "74a60e35-8213-45b5-8733-dd4912d476b2","status" : "Running","tickFinished" : "47","tickCount" : "744","longestTickDuration" : "348","time" : "1467632542"}
+Executed Tick 48 in 34324 ms.

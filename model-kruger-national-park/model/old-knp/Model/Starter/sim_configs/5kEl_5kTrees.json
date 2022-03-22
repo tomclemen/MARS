@@ -1,0 +1,76 @@
+{
+  "globals": {
+    "deltaT": 1,
+    "startPoint": "1989-01-01T00:00:00.000Z",
+    "endPoint": "1990-01-01T23:59:00.000Z",
+    "deltaTUnit": "hours",
+  },
+  "layers": [
+    {
+      "name": "KNPGISRasterTempLayer",
+      "file": "input_data/RCP8.5_2094_temp.zip"
+    },
+    {
+      "name": "KNPGISRasterFenceLayer",
+      "file": "input_data/gis_raster_border.zip"
+    },
+    {
+      "name": "KNPGISRasterShadeLayer",
+      "file": "input_data/gis_raster_shade.zip"
+    },
+    {
+      "name": "KNPGISRasterVegetationLayer",
+      "file": "input_data/gis_raster_biomass_ts.zip"
+    },
+    {
+      "name": "KNPGISRasterPrecipitationLayer",
+      "file": "input_data/RCP8.5_2094_pre.zip"
+    },
+    {
+      "name": "KNPGISVectorPrecipitationLayer",
+      "file": "input_data/gis_vector_precipitation.zip"
+    },
+    {
+      "name": "KNPGISVectorTempLayer",
+      "file": "input_data/gis_vector_temperature.zip"
+    },
+    {
+      "name": "KNPGISVectorWaterLayer",
+      "file": "input_data/merged_waters_fixed_with_fence_buffer.geojson"
+    }
+  ],
+  "agents": [
+    {
+      "name": "Elephant",
+      "count": 1,
+      "file": "input_data/agents_elephants_reduced_50.csv",
+      "mapping": [
+        {
+          "parameter": "biomassCellDifference",
+          "value": 6
+        },
+        {
+          "parameter": "satietyMultiplier",
+          "value": 1
+        },
+        {
+          "parameter": "tickSearchForFood",
+          "value": 4
+        },
+        {
+          "parameter": "biomassNeighbourSearchLvl",
+          "value": 8
+        },
+        {
+          "parameter": "minDehydration",
+          "value": 160
+        }
+      ]
+    },
+    {
+      "name": "MarulaTree",
+      "count": 1,
+      "file": "input_data/agents_marulas_reduced_50.csv"
+    }
+  ]
+}

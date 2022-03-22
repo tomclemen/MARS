@@ -1,0 +1,96 @@
+{
+	"globals": {
+		"deltaT": 1,
+		"deltaTUnit": "hours",
+		"startTime": "01/01/2010",
+		"endTime": "01/02/2010",
+		"output":"csv"
+	},
+	"layers": [{
+			"name": "Temperature",
+			"file": "../../model_input/RCP4.5_2010_2050_temp.zip"
+		},
+		{
+			"name": "Precipitation",
+			"file": "../../model_input/RCP4.5_2010_2050_pre.zip"
+		},
+		{
+			"name":"KNPGISRasterFenceLayer",
+			"file":"../../model_input/gis_raster_border.zip"
+		},
+		{
+			"name":"KNPGISRasterShadeLayer",
+			"file": "../../model_input/gis_raster_shade.zip"
+		},
+		{
+			"name":"KNPGISRasterVegetationLayer",
+			"file":"../../model_input/gis_raster_biomass_ts.zip"
+		},
+		{
+			"name":"KNPGISVectorWaterLayer",
+			"file": "../../model_input/merged_waters_fixed_with_fence_buffer.geojson"
+		},
+		{
+			"name":"TreeRaster",
+			"file":"../../model_input/tree_skukuza_raster.zip"
+		},
+		{  
+			"name":"DroughtLayer",
+			"mapping":[  
+				{  
+					"parameter":"precipitationThreshold",
+					"value":370
+				}
+			]
+		  }
+	],
+	"agents": [{
+			"name": "Elephant",
+			"file": "../../model_input/elephant1989_constant_population_7,5k.csv",
+			"count": 7500,
+			"frequency": 1,
+			"outputFrequency": 1
+		},
+		
+		{  
+			 "name":"Rafiki",
+			 "count":1,
+			 "frequency":8766,
+			 "outputFrequency":8765
+		},
+		{
+			"name": "Tree",
+			"count": 200,
+			"file": "../../model_input/tree_skukuza_test_ha.csv",
+			"frequency": 24,
+			"outputFrequency": 8765,
+			"individuals": [
+				{  
+					"parameter":"IsScenario45not85",
+					"value":true
+				},
+				{
+					"name": "ycor",
+					"field": "lat"
+				},
+				{
+					"name": "xcor",
+					"field": "lon"
+				},
+				{
+					"name": "StemDiameter",
+					"field": "diameter"
+				},
+				{
+					"name": "Species",
+					"field": "species"
+				},
+				{
+					"name": "Raster",
+					"field": "raster"
+				}
+			]
+		}
+	]
+
+}

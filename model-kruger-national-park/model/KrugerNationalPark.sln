@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroughtLayer", "model-savanna-trees\model\DroughtLayer\DroughtLayer.csproj", "{7CF56159-8649-4B60-9DFE-D24CCD80F56D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavannaTrees", "model-savanna-trees\src-gen\SavannaTrees.csproj", "{FB545550-6048-41EB-B544-426DB1500345}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter", "Starter\Starter.csproj", "{F5E06583-EF62-44DC-ADB0-BE4B00909F4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeKeepingLayer", "TimeKeepingLayer\TimeKeepingLayer.csproj", "{A1A946F3-8EA7-41AD-8188-708286D27ED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerbivorePressureLayer", "model-savanna-trees\model\HerbivorePressureLayer\HerbivorePressureLayer.csproj", "{347EE38E-67B1-454A-9865-665C9CD8393F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D4AE3E31-502A-42C1-AD2D-6A80031189D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulationTests", "SimulationTests\SimulationTests.csproj", "{E614BB60-B1BB-4BC3-8A39-A9D93D5FCA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNPElephantLayer", "old-knp\Model\KNPElephantLayer\KNPElephantLayer.csproj", "{2877B8CB-1229-4FF4-A485-6C7D96EED871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNPGISRasterFenceLayer", "old-knp\Model\KNPGISRasterFenceLayer\KNPGISRasterFenceLayer.csproj", "{8A014193-107C-4570-AE5B-6EEC28EFFBFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNPGISRasterShadeLayer", "old-knp\Model\KNPGISRasterShadeLayer\KNPGISRasterShadeLayer.csproj", "{AEA5A3FF-4687-4BF8-B506-5E745B3152A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNPGISRasterVegetationLayer", "old-knp\Model\KNPGISRasterVegetationLayer\KNPGISRasterVegetationLayer.csproj", "{7F840212-7122-4A39-B713-53D189F8B100}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNPGISVectorWaterLayer", "old-knp\Model\KNPGISVectorWaterLayer\KNPGISVectorWaterLayer.csproj", "{2EE75143-167C-4F00-995D-17C91B33309A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNPTreeQuickFindLayer", "old-knp\Model\KNPTreeQuickFindLayer\KNPTreeQuickFindLayer.csproj", "{DE785BE2-688F-436D-BDF3-901A0482A3EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CF56159-8649-4B60-9DFE-D24CCD80F56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF56159-8649-4B60-9DFE-D24CCD80F56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF56159-8649-4B60-9DFE-D24CCD80F56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF56159-8649-4B60-9DFE-D24CCD80F56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB545550-6048-41EB-B544-426DB1500345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB545550-6048-41EB-B544-426DB1500345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB545550-6048-41EB-B544-426DB1500345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB545550-6048-41EB-B544-426DB1500345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E06583-EF62-44DC-ADB0-BE4B00909F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E06583-EF62-44DC-ADB0-BE4B00909F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E06583-EF62-44DC-ADB0-BE4B00909F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E06583-EF62-44DC-ADB0-BE4B00909F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A946F3-8EA7-41AD-8188-708286D27ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A946F3-8EA7-41AD-8188-708286D27ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A946F3-8EA7-41AD-8188-708286D27ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A946F3-8EA7-41AD-8188-708286D27ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347EE38E-67B1-454A-9865-665C9CD8393F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347EE38E-67B1-454A-9865-665C9CD8393F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347EE38E-67B1-454A-9865-665C9CD8393F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347EE38E-67B1-454A-9865-665C9CD8393F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E614BB60-B1BB-4BC3-8A39-A9D93D5FCA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E614BB60-B1BB-4BC3-8A39-A9D93D5FCA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E614BB60-B1BB-4BC3-8A39-A9D93D5FCA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E614BB60-B1BB-4BC3-8A39-A9D93D5FCA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2877B8CB-1229-4FF4-A485-6C7D96EED871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2877B8CB-1229-4FF4-A485-6C7D96EED871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2877B8CB-1229-4FF4-A485-6C7D96EED871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2877B8CB-1229-4FF4-A485-6C7D96EED871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A014193-107C-4570-AE5B-6EEC28EFFBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A014193-107C-4570-AE5B-6EEC28EFFBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A014193-107C-4570-AE5B-6EEC28EFFBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A014193-107C-4570-AE5B-6EEC28EFFBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA5A3FF-4687-4BF8-B506-5E745B3152A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA5A3FF-4687-4BF8-B506-5E745B3152A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA5A3FF-4687-4BF8-B506-5E745B3152A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA5A3FF-4687-4BF8-B506-5E745B3152A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F840212-7122-4A39-B713-53D189F8B100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F840212-7122-4A39-B713-53D189F8B100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F840212-7122-4A39-B713-53D189F8B100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F840212-7122-4A39-B713-53D189F8B100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE75143-167C-4F00-995D-17C91B33309A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE75143-167C-4F00-995D-17C91B33309A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE75143-167C-4F00-995D-17C91B33309A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE75143-167C-4F00-995D-17C91B33309A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE785BE2-688F-436D-BDF3-901A0482A3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE785BE2-688F-436D-BDF3-901A0482A3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE785BE2-688F-436D-BDF3-901A0482A3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE785BE2-688F-436D-BDF3-901A0482A3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E614BB60-B1BB-4BC3-8A39-A9D93D5FCA74} = {D4AE3E31-502A-42C1-AD2D-6A80031189D9}
+	EndGlobalSection
+EndGlobal

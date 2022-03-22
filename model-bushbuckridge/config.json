@@ -1,0 +1,107 @@
+{  
+   "globals":{  
+      "deltaT":1,
+      "deltaTUnit":"days",
+      "startTime":"10/1/2010",
+      "endTime":"10/4/2050",
+      "output":"csv",
+      "options":{  
+        "delimiter": ",",
+   		"numberFormat": "F9"
+      }
+   },
+   "layers":[  
+      {  
+         "name":"Temperature",
+         "file":"../../model_input/RCP4.5_2010_2050_temp.zip"
+      },
+      {  
+         "name":"Precipitation",
+         "file":"../../model_input/RCP4.5_2010_2050_pre.zip"
+      },
+      {  
+         "name":"TreeRaster",
+         "file":"../../model_input/tree_bushbuckridge_raster_5x5.zip"
+      },
+      {  
+         "name":"DroughtLayer",
+         "frequency":1,
+         "mapping":[  
+            {  
+               "parameter":"precipitationThreshold",
+               "value":435
+            }
+         ]
+      },
+      {  
+         "name":"HerbivorePressureLayer",
+         "frequency":1,
+         "mapping":[  
+            {  
+               "parameter":"percentageOfTrees",
+               "value":30
+            },
+            {  
+               "parameter":"damageMultiplier",
+               "value":1
+            }
+         ]
+      }
+   ],
+   "agents":[  
+      {  
+         "name":"FirewoodCollector",
+         "count":14,
+         "file":"../../model_input/household.csv",
+         "frequency":1,
+         "outputFrequency":365
+      },
+      {  
+         "name":"Rafiki",
+         "count":1,
+         "frequency":365,
+         "outputFrequency":364
+      },
+      {  
+         "name":"Tree",
+         "count":	22300,
+         "file":"../../model_input/tree_bushbuckridge_5x5.csv",
+         "frequency":1,
+         "outputFrequency":365,
+         "outputType": "individual",
+      //    "outputFilter":[
+      //     {
+      //        "parameter":"MyTreeAgeGroup",
+      //        "operator":"in",
+      //        "values": ["Adult"]
+      //     }
+      // ],
+         "individuals":[  
+            {  
+               "parameter":"IsScenario45not85",
+               "value":true
+            },
+            {  
+               "name":"ycor",
+               "field":"lat"
+            },
+            {  
+               "name":"xcor",
+               "field":"lon"
+            },
+            {  
+               "name":"StemDiameter",
+               "field":"diameter"
+            },
+            {  
+               "name":"Species",
+               "field":"species"
+            },
+            {  
+               "name":"Raster",
+               "field":"raster"
+            }
+         ]
+      }
+   ]
+}
